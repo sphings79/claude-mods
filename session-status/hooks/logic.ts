@@ -61,6 +61,6 @@ export const resetLabel = (iso: string | null, lang: Lang, now: number): string 
 export const minutesLeft = (secondsLeft: number): number => Math.ceil(secondsLeft / 60)
 
 export const TEXT = {
-  de: { cache: 'Cache', expired: 'abgelaufen', expiredShort: 'abgel.', context: 'Kontext', auto: 'Auto-Compact', compact: 'Compact', tokens: 'Token', limits: 'Limits', week: 'Woche', spend: 'Limit', days: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'], busy: 'Compact geht erst nach der Antwort.', shown: 'Status-Leiste eingeblendet.', hidden: 'Status-Leiste ausgeblendet.' },
-  en: { cache: 'Cache', expired: 'expired', expiredShort: 'exp.', context: 'Context', auto: 'Auto-compact', compact: 'Compact', tokens: 'tokens', limits: 'Limits', week: 'Week', spend: 'Limit', days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], busy: 'Compact works once the answer is done.', shown: 'Status band shown.', hidden: 'Status band hidden.' },
+  de: { cache: 'Cache', expired: 'abgelaufen', expiredShort: 'abgel.', context: 'Kontext', auto: 'Auto-Compact', compact: 'Compact', agents: 'Agents', tokens: 'Token', limits: 'Limits', week: 'Woche', spend: 'Limit', days: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'], busy: 'Compact geht erst nach der Antwort.', shown: 'Status-Leiste eingeblendet.', hidden: 'Status-Leiste ausgeblendet.' },
+  en: { cache: 'Cache', expired: 'expired', expiredShort: 'exp.', context: 'Context', auto: 'Auto-compact', compact: 'Compact', agents: 'Agents', tokens: 'tokens', limits: 'Limits', week: 'Week', spend: 'Limit', days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], busy: 'Compact works once the answer is done.', shown: 'Status band shown.', hidden: 'Status band hidden.' },
 } as const

@@ -21,6 +21,8 @@ const cache = atom({ plugin: 'session-status', key: 'cache' } as const, {
 
 const isHidden = atom({ plugin: 'session-status', key: 'isHidden' } as const, false)
 const isBusy = atom({ plugin: 'session-status', key: 'isBusy' } as const, false)
+// Whether the savvy-progress plugin's `/agents-info` command exists in this session.
+const hasAgents = atom({ plugin: 'session-status', key: 'hasAgents' } as const, false)
 
 const COLORS: Record<Level, string> = { ok: '#4caf6e', warn: '#e2a94e', alert: '#e0846b', expired: '#e0645b' }
 const MUTED = '#8a8f8c'
@@ -40,12 +42,37 @@ const detectLang = async ($: EngineInterface, option: unknown): Promise<Lang> =>
   return langOf(typeof Intl !== 'undefined' ? Intl.DateTimeFormat().resolvedOptions().locale : undefined)
 }
 
-const refreshUsage = async ($: EngineInterface) => {
+const AGENTS_COMMAND = 'agents-info'
+
+const refreshAgents = async ($: EngineInterface) => {
+  const found = await $.command.list().then(list => list.some(c => c.name === AGENTS_COMMAND && c.source === 'plugin'), () => false)
+  if (found !== (await read($, hasAgents))) await update($, hasAgents, () => found)
+}
+
+// Limits belong to the account, but a session only learns them from its own responses.
+// Each session publishes what it measured and picks up what another session published later.
+const SHARED_LIMITS = 'limits'
+type SharedLimits = { at: number; limits: Stats['limits'] }
+let limitsAt = 0
+
+// `fresh`: the limits come from a response this session just had; only then are they published.
+const refreshUsage = async ($: EngineInterface, fresh = false) => {
   const { context, cost, rateLimits } = await $.session.usage({ breakdown: 'summary' })
   const threshold = context.breakdown?.autoCompactThreshold
   const autoCompact = threshold && context.window ? Math.round((threshold / context.window) * 100) : null
   const limits = rateLimits.map(r => ({ kind: r.kind, percent: r.percentUsed, resetsAt: r.resetsAt ?? null }))
-  await update($, stats, s => ({ ...s, context: context.percent ?? s.context, autoCompact, cost: cost?.usd ?? null, limits }))
+  if (fresh && limits.length > 0) {
+    limitsAt = await $.clock.now()
+    await $.store.set(SHARED_LIMITS, { at: limitsAt, limits } satisfies SharedLimits).catch(() => undefined)
+  }
+  await update($, stats, s => ({ ...s, context: context.percent ?? s.context, autoCompact, cost: cost?.usd ?? null, limits: fresh ? limits : s.limits }))
+}
+
+const adoptSharedLimits = async ($: EngineInterface) => {
+  const shared = (await $.store.get(SHARED_LIMITS).catch(() => undefined)) as SharedLimits | undefined
+  if (!shared || typeof shared.at !== 'number' || !Array.isArray(shared.limits) || shared.at <= limitsAt) return
+  limitsAt = shared.at
+  await update($, stats, s => ({ ...s, limits: shared.limits }))
 }
 
 export const register: Register = (on, options) => {
@@ -59,6 +86,8 @@ export const register: Register = (on, options) => {
 
     // Re-derive the countdown; write only when the shown minute or a bar cell changes.
     $.clock.every(5000, async () => {
+      await refreshAgents($)
+      await adoptSharedLimits($)
       const { expiresAt, secondsLeft } = await read($, cache)
       if (expiresAt === null) return
       const left = Math.max(0, Math.floor((expiresAt - (await $.clock.now())) / 1000))
@@ -120,9 +149,18 @@ export const register: Register = (on, options) => {
       await update($, cache, () => ({ expiresAt: now + CACHE_TTL_S * 1000, secondsLeft: CACHE_TTL_S }))
       await update($, stats, s => ({ ...s, turn: s.turn + 1 }))
       await update($, isBusy, () => false)
-      await refreshUsage($)
+      await refreshUsage($, true)
     }
 
+    return result
+  })
+
+  // The engine pushes a measurement when a limit window moves a whole point, also mid-turn.
+  on('session.measure', async ($, e, next) => {
+    const result = await next(e)
+    if (e.changed.includes('rateLimits') || e.changed.includes('context') || e.changed.includes('cost')) {
+      await refreshUsage($, e.changed.includes('rateLimits')).catch(() => undefined)
+    }
     return result
   })
 
@@ -145,6 +183,7 @@ export const register: Register = (on, options) => {
     const now = await $.clock.now()
     const ctxColor = COLORS[contextLevel(s.context)]
     const ctxLit = contextCells(s.context)
+    const agentsShown = await read($, hasAgents)
     const lit = secondsLeft === null ? 0 : filledCells(secondsLeft)
 
     const cacheLabel = `${minutesLeft(secondsLeft ?? 0)}m`
@@ -170,6 +209,15 @@ export const register: Register = (on, options) => {
             <Text dimColor wrap="truncate-end">{`(${formatTokens(s.cacheTokens)} ${t.tokens})`}</Text>
           ) : null}
           <Box flexGrow={1} flexShrink={1} />
+          {agentsShown ? (
+            <Button
+              key="agents"
+              label={t.agents}
+              onPress={async () => {
+                await $.command.run({ command: AGENTS_COMMAND }).catch(() => $.ui.toast(t.busy))
+              }}
+            />
+          ) : null}
           <Button
             key="compact"
             label={t.compact}

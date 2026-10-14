@@ -20,6 +20,6 @@ export type Cache = {
 
 declare module 'claude-code' {
   interface PluginState {
-    'session-status': { stats: Stats; cache: Cache; isHidden: boolean; isBusy: boolean }
+    'session-status': { stats: Stats; cache: Cache; isHidden: boolean; isBusy: boolean; hasAgents: boolean }
   }
 }
