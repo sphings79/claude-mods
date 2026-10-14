@@ -1,6 +1,6 @@
 {
   "name": "session-status",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Band above the prompt: prompt-cache countdown, context fill, session cost, usage limits and a Compact button.",
   "author": { "name": "sphings79", "url": "https://github.com/sphings79" },
   "types": "./types/index.d.ts",

@@ -7,7 +7,7 @@
       "name": "session-status",
       "source": "./session-status",
       "description": "Mod: band above the prompt with prompt-cache countdown, context fill, session cost, usage limits and a Compact button.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "category": "mod"
     }
   ]
