@@ -1,6 +1,6 @@
 import { test, expect } from 'claude-code/testing'
 
-import { cacheLevel, contextCells, contextLevel, filledCells, langOf, limitLabel, minutesLeft, resetLabel, usd } from './logic'
+import { cacheLevel, cacheTokens, formatTokens, contextCells, contextLevel, filledCells, langOf, limitLabel, minutesLeft, resetLabel, usd } from './logic'
 
 test('cache levels and bar', () => {
   expect(cacheLevel(null)).toBeNull()
@@ -40,4 +40,12 @@ test('limits and cost', () => {
   const noon = new Date(2026, 9, 14, 12, 0).getTime()
   expect(resetLabel(new Date(2026, 9, 14, 14, 30).toISOString(), 'de', noon)).toBe('14:30')
   expect(resetLabel(new Date(2026, 9, 19, 9, 5).toISOString(), 'de', noon)).toBe('Mo 09:05')
+})
+
+test('cache tokens', () => {
+  expect(cacheTokens({ cache_read_input_tokens: 180000, cache_creation_input_tokens: 4000 })).toBe(184000)
+  expect(cacheTokens({ cache_read_input_tokens: 0, cache_creation_input_tokens: null })).toBeNull()
+  expect(formatTokens(950)).toBe('950')
+  expect(formatTokens(184000)).toBe('184k')
+  expect(formatTokens(1_250_000)).toBe('1.3M')
 })

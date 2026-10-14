@@ -9,6 +9,7 @@ export type Stats = {
   context: number
   autoCompact: number | null
   cost: number | null
+  cacheTokens: number | null
   limits: Limit[]
 }
 

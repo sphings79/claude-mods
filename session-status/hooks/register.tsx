@@ -2,7 +2,7 @@ import { atom, read, update } from 'claude-code'
 import type { EngineInterface, Register } from 'claude-code'
 
 import type { Cache, Stats } from '../types'
-import { BAR_CELLS, CACHE_TTL_S, TEXT, cacheLevel, contextCells, contextLevel, filledCells, langOf, limitLabel, minutesLeft, resetLabel, usd } from './logic'
+import { BAR_CELLS, CACHE_TTL_S, TEXT, cacheLevel, cacheTokens, formatTokens, contextCells, contextLevel, filledCells, langOf, limitLabel, minutesLeft, resetLabel, usd } from './logic'
 import type { Lang, Level } from './logic'
 
 const stats = atom({ plugin: 'session-status', key: 'stats' } as const, {
@@ -10,6 +10,7 @@ const stats = atom({ plugin: 'session-status', key: 'stats' } as const, {
   context: 0,
   autoCompact: null,
   cost: null,
+  cacheTokens: null,
   limits: [],
 } as Stats)
 
@@ -82,6 +83,19 @@ export const register: Register = (on, options) => {
     return next(e)
   })
 
+  // What the cache holds, from the main agent's last response.
+  on('turn.step', async function* ($, e, next) {
+    if (e.agentId !== undefined) return yield* next(e)
+
+    for await (const chunk of next(e)) {
+      if (chunk.kind === 'stop' && chunk.usage !== null) {
+        const tokens = cacheTokens(chunk.usage)
+        if (tokens !== null) await update($, stats, s => ({ ...s, cacheTokens: tokens }))
+      }
+      yield chunk
+    }
+  })
+
   on('turn.complete', async ($, e, next) => {
     const result = await next(e)
 
@@ -136,6 +150,9 @@ export const register: Register = (on, options) => {
             </Text>
           ) : null}
           {level === 'expired' ? <Text bold color={color} wrap="truncate-end">{t.expired}</Text> : null}
+          {level !== 'expired' && s.cacheTokens !== null ? (
+            <Text dimColor wrap="truncate-end">{`${formatTokens(s.cacheTokens)} ${t.tokens}`}</Text>
+          ) : null}
           <Box flexGrow={1} flexShrink={1} />
           <Button
             key="compact"

@@ -52,12 +52,12 @@ claude plugin uninstall session-status@claude-mods
 ## session-status
 
 ```
-Cache    60m ■■■■■■■■■■■■■■■■■■■■                         [Compact]
+Cache    60m ■■■■■■■■■■■■■■■■■■■■ 184k Token                  [Compact]
 Kontext  19% ■■■■□□□□□□□□□□□□□□□□ (Auto-Compact 97%)
 Limits   5h 23% (14:30)  Woche 41% (Mo 09:00)               ($1.23)
 ```
 
-- **Cache**: Minuten, die der 1-Stunden-Prompt-Cache seit der letzten Antwort noch hat. Der Balken zeigt die Restzeit: grün, bei 20 min Amber, bei 10 min Rot, `abgelaufen` wenn er weg ist.
+- **Cache**: Minuten, die der 1-Stunden-Prompt-Cache seit der letzten Antwort noch hat. Der Balken zeigt die Restzeit: grün, bei 20 min Amber, bei 10 min Rot, `abgelaufen` wenn er weg ist. Hinter dem Balken: wie viele Token im Cache liegen (gelesen plus geschrieben von der letzten Antwort).
 - **Kontext**: Balken nach Füllung, grün, ab 60 % Amber, ab 80 % Rot.
 - **Auto-Compact**: Schwelle, bei der Claude Code von selbst komprimiert, in Prozent des Fensters.
 - **Limits**: Auslastung des 5-Stunden- und des Wochenfensters mit Reset-Zeit, auch das Spend-Limit eines Gateways. Die Farben folgen den Kontext-Schwellen. Erscheint, sobald die letzte Antwort sie gemeldet hat.

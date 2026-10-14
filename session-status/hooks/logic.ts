@@ -31,6 +31,15 @@ export const contextCells = (percent: number): number =>
 // Calm, getting full, nearly full.
 export const contextLevel = (percent: number): Level => (percent >= 80 ? 'alert' : percent >= 60 ? 'warn' : 'ok')
 
+// Tokens the cache holds: what the last response read from it plus what it wrote.
+export const cacheTokens = (usage: { cache_read_input_tokens?: number | null; cache_creation_input_tokens?: number | null }): number | null => {
+  const total = (usage.cache_read_input_tokens ?? 0) + (usage.cache_creation_input_tokens ?? 0)
+  return total > 0 ? total : null
+}
+
+export const formatTokens = (n: number): string =>
+  n < 1000 ? String(n) : n < 1_000_000 ? `${Math.round(n / 1000)}k` : `${(n / 1_000_000).toFixed(1)}M`
+
 export const usd = (n: number): string => `$${n.toFixed(2)}`
 
 const pad = (n: number) => String(n).padStart(2, '0')
@@ -50,6 +59,6 @@ export const resetLabel = (iso: string | null, lang: Lang, now: number): string 
 export const minutesLeft = (secondsLeft: number): number => Math.ceil(secondsLeft / 60)
 
 export const TEXT = {
-  de: { cache: 'Cache', expired: 'abgelaufen', context: 'Kontext', auto: 'Auto-Compact', compact: 'Compact', limits: 'Limits', week: 'Woche', spend: 'Limit', days: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'], busy: 'Compact geht erst nach der Antwort.', shown: 'Status-Leiste eingeblendet.', hidden: 'Status-Leiste ausgeblendet.' },
-  en: { cache: 'Cache', expired: 'expired', context: 'Context', auto: 'Auto-compact', compact: 'Compact', limits: 'Limits', week: 'Week', spend: 'Limit', days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], busy: 'Compact works once the answer is done.', shown: 'Status band shown.', hidden: 'Status band hidden.' },
+  de: { cache: 'Cache', expired: 'abgelaufen', context: 'Kontext', auto: 'Auto-Compact', compact: 'Compact', tokens: 'Token', limits: 'Limits', week: 'Woche', spend: 'Limit', days: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'], busy: 'Compact geht erst nach der Antwort.', shown: 'Status-Leiste eingeblendet.', hidden: 'Status-Leiste ausgeblendet.' },
+  en: { cache: 'Cache', expired: 'expired', context: 'Context', auto: 'Auto-compact', compact: 'Compact', tokens: 'tokens', limits: 'Limits', week: 'Week', spend: 'Limit', days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], busy: 'Compact works once the answer is done.', shown: 'Status band shown.', hidden: 'Status band hidden.' },
 } as const

@@ -15,50 +15,51 @@
     <rect width="1100" height="230" rx="22" fill="#efefed"/>
     <text x="40" y="62" fill="#85898c">Cache</text>
     <text x="150" y="62" fill="#34a65f" font-weight="700">60m</text>
-    <rect x="250" y="44" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="279" y="44" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="308" y="44" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="337" y="44" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="366" y="44" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="395" y="44" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="424" y="44" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="453" y="44" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="482" y="44" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="511" y="44" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="540" y="44" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="569" y="44" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="598" y="44" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="627" y="44" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="656" y="44" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="685" y="44" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="714" y="44" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="743" y="44" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="772" y="44" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="801" y="44" width="23" height="23" rx="3" fill="#34a65f"/>
+    <rect x="250" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="275" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="300" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="325" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="350" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="375" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="400" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="425" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="450" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="475" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="500" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="525" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="550" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="575" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="600" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="625" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="650" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="675" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="700" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="725" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
+    <text x="765" y="63" fill="#85898c" font-size="22">184k tokens</text>
     <rect x="950" y="36" width="110" height="38" rx="8" fill="#ffffff" stroke="#c9cbc9"/>
     <text x="1005" y="63" text-anchor="middle" fill="#2b2d2f" font-size="22">Compact</text>
     <text x="40" y="122" fill="#85898c">Context</text>
     <text x="150" y="122" fill="#1f2123" font-weight="700">24%</text>
-    <rect x="250" y="104" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="279" y="104" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="308" y="104" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="337" y="104" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="366" y="104" width="23" height="23" rx="3" fill="#34a65f"/>
-    <rect x="395" y="104" width="23" height="23" rx="3" fill="#c4c7c5"/>
-    <rect x="424" y="104" width="23" height="23" rx="3" fill="#c4c7c5"/>
-    <rect x="453" y="104" width="23" height="23" rx="3" fill="#c4c7c5"/>
-    <rect x="482" y="104" width="23" height="23" rx="3" fill="#c4c7c5"/>
-    <rect x="511" y="104" width="23" height="23" rx="3" fill="#c4c7c5"/>
-    <rect x="540" y="104" width="23" height="23" rx="3" fill="#c4c7c5"/>
-    <rect x="569" y="104" width="23" height="23" rx="3" fill="#c4c7c5"/>
-    <rect x="598" y="104" width="23" height="23" rx="3" fill="#c4c7c5"/>
-    <rect x="627" y="104" width="23" height="23" rx="3" fill="#c4c7c5"/>
-    <rect x="656" y="104" width="23" height="23" rx="3" fill="#c4c7c5"/>
-    <rect x="685" y="104" width="23" height="23" rx="3" fill="#c4c7c5"/>
-    <rect x="714" y="104" width="23" height="23" rx="3" fill="#c4c7c5"/>
-    <rect x="743" y="104" width="23" height="23" rx="3" fill="#c4c7c5"/>
-    <rect x="772" y="104" width="23" height="23" rx="3" fill="#c4c7c5"/>
-    <rect x="801" y="104" width="23" height="23" rx="3" fill="#c4c7c5"/>
+    <rect x="250" y="105" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="275" y="105" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="300" y="105" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="325" y="105" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="350" y="105" width="20" height="20" rx="3" fill="#34a65f"/>
+    <rect x="375" y="105" width="20" height="20" rx="3" fill="#c4c7c5"/>
+    <rect x="400" y="105" width="20" height="20" rx="3" fill="#c4c7c5"/>
+    <rect x="425" y="105" width="20" height="20" rx="3" fill="#c4c7c5"/>
+    <rect x="450" y="105" width="20" height="20" rx="3" fill="#c4c7c5"/>
+    <rect x="475" y="105" width="20" height="20" rx="3" fill="#c4c7c5"/>
+    <rect x="500" y="105" width="20" height="20" rx="3" fill="#c4c7c5"/>
+    <rect x="525" y="105" width="20" height="20" rx="3" fill="#c4c7c5"/>
+    <rect x="550" y="105" width="20" height="20" rx="3" fill="#c4c7c5"/>
+    <rect x="575" y="105" width="20" height="20" rx="3" fill="#c4c7c5"/>
+    <rect x="600" y="105" width="20" height="20" rx="3" fill="#c4c7c5"/>
+    <rect x="625" y="105" width="20" height="20" rx="3" fill="#c4c7c5"/>
+    <rect x="650" y="105" width="20" height="20" rx="3" fill="#c4c7c5"/>
+    <rect x="675" y="105" width="20" height="20" rx="3" fill="#c4c7c5"/>
+    <rect x="700" y="105" width="20" height="20" rx="3" fill="#c4c7c5"/>
+    <rect x="725" y="105" width="20" height="20" rx="3" fill="#c4c7c5"/>
     <text x="40" y="182" fill="#85898c">Limits</text>
     <text x="150" y="182" fill="#85898c">5h <tspan fill="#34a65f" font-weight="700">11%</tspan> (07:00)   Week <tspan fill="#34a65f" font-weight="700">9%</tspan> (Thu 17:00)</text>
     <text x="1060" y="182" text-anchor="end" fill="#85898c">($5.57)</text>
