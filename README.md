@@ -16,7 +16,13 @@ If this is useful, a ⭐ on the repo helps others find it.
 
 Needs a Claude Code build with mod (function hook) support. Developed against 2.1.295.
 
-**1. In a Claude Code terminal session:**
+**Or just ask Claude** in any Claude Code chat, including the desktop app:
+
+> Install the plugin session-status from https://github.com/sphings79/claude-mods for all my sessions (user scope).
+
+Claude adds the marketplace and installs the plugin for you. Read the code first if you like; it is a few hundred lines.
+
+**In a Claude Code terminal session:**
 
 ```
 /plugin install session-status --marketplace sphings79/claude-mods
@@ -38,7 +44,7 @@ claude plugin marketplace add https://github.com/sphings79/claude-mods.git
 claude plugin install session-status@claude-mods
 ```
 
-**2. Load it:** restart Claude Code or run `/reload-plugins`. The band appears after the first answer of a session.
+**Then load it:** restart Claude Code or run `/reload-plugins`. The band appears after the first answer of a session.
 
 **Desktop app:** `/plugin install` is not available in the Code tab. Install from a terminal at user scope; the mod then loads in desktop sessions too.
 

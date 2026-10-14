@@ -16,7 +16,13 @@ Wenn dir das nützt, hilft ein ⭐ auf dem Repo, dass andere es finden.
 
 Voraussetzung: ein Claude-Code-Build mit Mod-Unterstützung (Function Hooks). Entwickelt gegen 2.1.295.
 
-**1. In einer Claude-Code-Terminal-Sitzung:**
+**Oder sag es einfach Claude** in einem beliebigen Claude-Code-Chat, auch in der Desktop-App:
+
+> Installiere das Plugin session-status aus https://github.com/sphings79/claude-mods für alle meine Sessions (User-Scope).
+
+Claude fügt den Marketplace hinzu und installiert das Plugin für dich. Den Code kannst du vorher lesen, es sind ein paar hundert Zeilen.
+
+**In einer Claude-Code-Terminal-Sitzung:**
 
 ```
 /plugin install session-status --marketplace sphings79/claude-mods
@@ -38,7 +44,7 @@ claude plugin marketplace add https://github.com/sphings79/claude-mods.git
 claude plugin install session-status@claude-mods
 ```
 
-**2. Laden:** Claude Code neu starten oder `/reload-plugins` ausführen. Die Leiste erscheint nach der ersten Antwort einer Sitzung.
+**Danach laden:** Claude Code neu starten oder `/reload-plugins` ausführen. Die Leiste erscheint nach der ersten Antwort einer Sitzung.
 
 **Desktop-App:** `/plugin install` gibt es im Code-Tab nicht. Im Terminal im User-Scope installieren, dann lädt der Mod auch in Desktop-Sitzungen.
 
