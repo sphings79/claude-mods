@@ -79,6 +79,8 @@ Option `language`: `auto` (default; follows Claude Code's `language` setting, th
 { "pluginConfigs": { "session-status": { "options": { "language": "de" } } } }
 ```
 
+> **Note:** The Claude desktop app passes neither a language setting nor `LANG` to mods, so `auto` often falls back to English there even on a German system. Set `language` explicitly (above). `/session-status lang` shows what the detection saw.
+
 ## Support
 
 Free and MIT licensed. If it saves you tokens or time, you can [buy me a coffee](https://buymeacoffee.com/sphings). More at [sphings-dev.de](https://sphings-dev.de).

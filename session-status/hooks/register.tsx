@@ -72,7 +72,23 @@ export const register: Register = (on, options) => {
     return result
   })
 
-  on('command.run', { command: 'session-status' }, async ($) => {
+  on('command.run', { command: 'session-status' }, async ($, e) => {
+    // `/session-status lang` shows what the language detection saw.
+    if (e.args.trim() === 'lang') {
+      const settings = await $.settings.read().then(v => (v as Record<string, unknown>).language, () => undefined)
+      const seen = {
+        option: options.language,
+        settings: settings ?? null,
+        LC_ALL: (await $.env.get('LC_ALL')) ?? null,
+        LC_MESSAGES: (await $.env.get('LC_MESSAGES')) ?? null,
+        LANG: (await $.env.get('LANG')) ?? null,
+        LANGUAGE: (await $.env.get('LANGUAGE')) ?? null,
+        intl: typeof Intl !== 'undefined' ? Intl.DateTimeFormat().resolvedOptions().locale : null,
+        used: lang,
+      }
+      return { text: JSON.stringify(seen) }
+    }
+
     const hidden = !(await read($, isHidden))
     await update($, isHidden, () => hidden)
     return { text: hidden ? TEXT[lang].hidden : TEXT[lang].shown }
