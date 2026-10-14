@@ -58,7 +58,7 @@ claude plugin uninstall session-status@claude-mods
 ## session-status
 
 ```
-Cache    60m ■■■■■■■■■■■■■■■■■■■■ 184k Token                  [Compact]
+Cache    60m ■■■■■■■■■■■■■■■■■■■■ (184k Token)                  [Compact]
 Kontext  19% ■■■■□□□□□□□□□□□□□□□□ (Auto-Compact 97%)
 Limits   5h 23% (14:30)  Woche 41% (Mo 09:00)               ($1.23)
 ```

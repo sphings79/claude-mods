@@ -35,7 +35,7 @@
     <rect x="675" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
     <rect x="700" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
     <rect x="725" y="45" width="20" height="20" rx="3" fill="#34a65f"/>
-    <text x="765" y="63" fill="#85898c" font-size="22">184k tokens</text>
+    <text x="765" y="63" fill="#85898c" font-size="22">(184k tokens)</text>
     <rect x="950" y="36" width="110" height="38" rx="8" fill="#ffffff" stroke="#c9cbc9"/>
     <text x="1005" y="63" text-anchor="middle" fill="#2b2d2f" font-size="22">Compact</text>
     <text x="40" y="122" fill="#85898c">Context</text>

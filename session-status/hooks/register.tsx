@@ -151,7 +151,7 @@ export const register: Register = (on, options) => {
           ) : null}
           {level === 'expired' ? <Text bold color={color} wrap="truncate-end">{t.expired}</Text> : null}
           {level !== 'expired' && s.cacheTokens !== null ? (
-            <Text dimColor wrap="truncate-end">{`${formatTokens(s.cacheTokens)} ${t.tokens}`}</Text>
+            <Text dimColor wrap="truncate-end">{`(${formatTokens(s.cacheTokens)} ${t.tokens})`}</Text>
           ) : null}
           <Box flexGrow={1} flexShrink={1} />
           <Button
