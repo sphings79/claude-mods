@@ -1,0 +1,17 @@
+{
+  "name": "session-status",
+  "version": "0.1.0",
+  "description": "Band above the prompt: prompt-cache countdown, context fill, session cost, usage limits and a Compact button.",
+  "author": { "name": "sphings79", "url": "https://github.com/sphings79" },
+  "types": "./types/index.d.ts",
+  "license": "MIT",
+  "userConfig": {
+    "language": {
+      "type": "string",
+      "title": "Band language",
+      "description": "auto follows Claude Code's language setting, then the system locale; de or en",
+      "default": "auto",
+      "options": ["auto", "de", "en"]
+    }
+  }
+}

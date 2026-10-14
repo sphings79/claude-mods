@@ -1,0 +1,14 @@
+{
+  "name": "claude-mods",
+  "owner": { "name": "sphings79", "url": "https://github.com/sphings79" },
+  "metadata": { "description": "sphings79's Claude Code mods." },
+  "plugins": [
+    {
+      "name": "session-status",
+      "source": "./session-status",
+      "description": "Mod: band above the prompt with prompt-cache countdown, context fill, session cost, usage limits and a Compact button.",
+      "version": "0.1.0",
+      "category": "mod"
+    }
+  ]
+}
