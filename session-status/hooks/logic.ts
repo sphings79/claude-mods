@@ -4,6 +4,8 @@ export const CACHE_TTL_S = 60 * 60
 export const CACHE_WARN_S = 20 * 60
 export const CACHE_ALERT_S = 10 * 60
 export const BAR_CELLS = 20
+// Below this width the full row (bar, `expired`, tokens, button) no longer fits.
+export const NARROW_COLUMNS = 75
 
 export const langOf = (value: string | undefined): Lang => (/^de/i.test((value ?? '').trim()) ? 'de' : 'en')
 
@@ -59,6 +61,6 @@ export const resetLabel = (iso: string | null, lang: Lang, now: number): string 
 export const minutesLeft = (secondsLeft: number): number => Math.ceil(secondsLeft / 60)
 
 export const TEXT = {
-  de: { cache: 'Cache', expired: 'abgelaufen', context: 'Kontext', auto: 'Auto-Compact', compact: 'Compact', tokens: 'Token', limits: 'Limits', week: 'Woche', spend: 'Limit', days: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'], busy: 'Compact geht erst nach der Antwort.', shown: 'Status-Leiste eingeblendet.', hidden: 'Status-Leiste ausgeblendet.' },
-  en: { cache: 'Cache', expired: 'expired', context: 'Context', auto: 'Auto-compact', compact: 'Compact', tokens: 'tokens', limits: 'Limits', week: 'Week', spend: 'Limit', days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], busy: 'Compact works once the answer is done.', shown: 'Status band shown.', hidden: 'Status band hidden.' },
+  de: { cache: 'Cache', expired: 'abgelaufen', expiredShort: 'abgel.', context: 'Kontext', auto: 'Auto-Compact', compact: 'Compact', tokens: 'Token', limits: 'Limits', week: 'Woche', spend: 'Limit', days: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'], busy: 'Compact geht erst nach der Antwort.', shown: 'Status-Leiste eingeblendet.', hidden: 'Status-Leiste ausgeblendet.' },
+  en: { cache: 'Cache', expired: 'expired', expiredShort: 'exp.', context: 'Context', auto: 'Auto-compact', compact: 'Compact', tokens: 'tokens', limits: 'Limits', week: 'Week', spend: 'Limit', days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], busy: 'Compact works once the answer is done.', shown: 'Status band shown.', hidden: 'Status band hidden.' },
 } as const

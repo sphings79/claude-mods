@@ -2,7 +2,7 @@ import { atom, read, update } from 'claude-code'
 import type { EngineInterface, Register } from 'claude-code'
 
 import type { Cache, Stats } from '../types'
-import { BAR_CELLS, CACHE_TTL_S, TEXT, cacheLevel, cacheTokens, formatTokens, contextCells, contextLevel, filledCells, langOf, limitLabel, minutesLeft, resetLabel, usd } from './logic'
+import { BAR_CELLS, CACHE_TTL_S, NARROW_COLUMNS, TEXT, cacheLevel, cacheTokens, formatTokens, contextCells, contextLevel, filledCells, langOf, limitLabel, minutesLeft, resetLabel, usd } from './logic'
 import type { Lang, Level } from './logic'
 
 const stats = atom({ plugin: 'session-status', key: 'stats' } as const, {
@@ -165,8 +165,8 @@ export const register: Register = (on, options) => {
               <Text color={MUTED} dimColor>{'■'.repeat(BAR_CELLS - lit)}</Text>
             </Text>
           ) : null}
-          {level === 'expired' ? <Text bold color={color} wrap="truncate-end">{t.expired}</Text> : null}
-          {level !== 'expired' && s.cacheTokens !== null ? (
+          {level === 'expired' ? <Text bold color={color} wrap="truncate-end">{columns < NARROW_COLUMNS ? t.expiredShort : t.expired}</Text> : null}
+          {s.cacheTokens !== null ? (
             <Text dimColor wrap="truncate-end">{`(${formatTokens(s.cacheTokens)} ${t.tokens})`}</Text>
           ) : null}
           <Box flexGrow={1} flexShrink={1} />
