@@ -64,7 +64,7 @@ Limits   5h 23% (14:30)  Week 41% (Mon 09:00)               ($1.23)
 ```
 
 - **Cache**: minutes left on the 1-hour prompt cache since the last answer. The bar shows the time left: green, amber at 20 min, red at 10 min, `expired` when it is gone. Behind the bar: how many tokens the cache holds (read plus written by the last response).
-- **Context**: bar by context fill, green, amber from 60 %, red from 80 %.
+- **Context**: number and bar by context fill, green, amber from 60 %, red from 80 %.
 - **Auto-compact**: the threshold at which Claude Code compacts on its own, in percent of the window.
 - **Limits**: usage of the 5-hour and weekly windows with their reset time; a gateway's spend limit too. Colours follow the context thresholds. Shown once the last response reported them.
 - **Cost** (bottom right, in parentheses): what the session has cost so far, as `/cost` totals it. On a subscription that is an API-equivalent estimate, not a bill.

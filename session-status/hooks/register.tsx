@@ -165,7 +165,7 @@ export const register: Register = (on, options) => {
         </Box>
         <Box flexDirection="row" alignItems="center" columnGap={1} flexWrap="nowrap" overflow="hidden">
           <Cell width={8}><Text dimColor wrap="truncate-end">{t.context}</Text></Cell>
-          <Cell width={5}><Text bold wrap="truncate-end">{`${s.context}%`}</Text></Cell>
+          <Cell width={5}><Text bold color={ctxColor} wrap="truncate-end">{`${s.context}%`}</Text></Cell>
           {columns >= 50 ? (
             <Text wrap="truncate-end">
               <Text color={ctxColor}>{'■'.repeat(ctxLit)}</Text>
